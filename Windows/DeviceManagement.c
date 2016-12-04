@@ -41,7 +41,7 @@ int SetRegistryValue(DWORD value, wchar_t * path, int path_size, wchar_t * varia
         }
         else{
             printf("[-] Key not changed in registry \n");
-            printf("[-] Error %u ", (unsigned int)GetLastError());
+            printf("[-] Error %s ", GetLastErrorAsString());
         }
         RegCloseKey(key);
     }
@@ -49,7 +49,6 @@ int SetRegistryValue(DWORD value, wchar_t * path, int path_size, wchar_t * varia
     {
         printf("[-] Unsuccessful in opening key  \n");
         printf("[-] Please run with Admin privilages to edit registry values \n");
-        printf("[-] Error: %u ", (unsigned int)GetLastError());
     }
 
     return 0;

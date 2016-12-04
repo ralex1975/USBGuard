@@ -9,11 +9,7 @@
 #include <wchar.h>
 
 
-// -----------------------------------------------------------------
-// EnumRegistry.c Functions
-// -----------------------------------------------------------------
 
-void QueryKey(HKEY hKey); 	// Query the registry key for all subitems
 
 // -----------------------------------------------------------------
 // DeviceManagement.c Functions
@@ -26,7 +22,11 @@ int DisableUSBDevices();	// Disable all USB Devices
 int EnableUSBDevices();		// Enable all USB Devices
 
 // -----------------------------------------------------------------
-// Privilages.c Functions
+// Tools
 // -----------------------------------------------------------------
 
-BOOL IsElevated(); 			// Checks if the program is elevated
+BOOL IsElevated(); 			// Checks if the program is elevated - Privilages.c
+
+void QueryKey(HKEY hKey); 	// Query the registry key for all subitems - EnumRegistry.c
+
+const char * GetLastErrorAsString(); 	// Return the last error as a string
