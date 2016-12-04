@@ -5,14 +5,16 @@
 Personal computer USB port management, not intended for scale. The approach is a little different on every platform. Goals for each implementation are to provide options for (check boxes indicate progress):
 
 1. Disabling all USB ports on your machine
-  - [x] Windows
-  - [ ] Linux
 2. Re-Enabling all USB ports on your machine
-  - [x] Windows
-  - [ ] Linux
 3. Whitelisting only certain USB devices to work via Plug-n-play
-  - [ ] Windows
-  - [ ] Linux
+
+  
+### Progress
+
+| Platform | Disabling Ports | Enabling Ports | Whitelisting Devices |
+| :---         |     :---:      |    :---:     |          :---: |
+| Windows   | :heavy_check_mark:     |   :heavy_check_mark:  | :heavy_multiplication_x:    |
+| Linux     | :heavy_multiplication_x:       | :heavy_multiplication_x:     | :heavy_multiplication_x:      |
 
 ### Windows
 
