@@ -23,6 +23,8 @@ void PrintDevices();		// Print all stored USB devices
 
 int DisableUSBDevices();	// Disable all USB Devices
 
+int EnableUSBDevices();		// Enable all USB Devices
+
 // -----------------------------------------------------------------
 // Privilages.c Functions
 // -----------------------------------------------------------------

@@ -62,6 +62,7 @@ int main()
             break;
         case 3:
             printf("\n%s\n", "[*] Enabling all usb ports...");
+            EnableUSBDevices();
             break;
         default:
             printf("\n%s\n", "[*] Could not interpret the provided option.");

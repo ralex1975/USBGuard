@@ -63,3 +63,11 @@ int DisableUSBDevices() {
 	return 0;
     
 }
+
+int EnableUSBDevices() {
+	DWORD number = 0x00000003;
+
+	SetRegistryValue(number, USBSTOR_BASE, 44, L"Start", 5);
+
+	return 0;
+}
