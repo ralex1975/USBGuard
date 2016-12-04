@@ -4,11 +4,18 @@
 
 Personal computer USB port management, not intended for scale. The approach is a little different on every platform.
 
-#### Currently Implemented
+#### Windows
 
-None
+The windows version disables system USB ports/devices using the registry values stored in 
 
-#### In Development
+```
+HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Enum\\USB
 
-USBGuard for Windows 
-USBGuard for Linux
+HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Enum\\USBSTOR
+```
+
+A usefull reference for the technique is the Microsoft documentation:
+
+1. [USB Device Registry Entries](https://msdn.microsoft.com/en-us/library/windows/hardware/jj649944(v=vs.85).aspx)
+
+2. [USB Device Descriptors](https://msdn.microsoft.com/en-us/library/windows/hardware/ff539283(v=vs.85).aspx)
