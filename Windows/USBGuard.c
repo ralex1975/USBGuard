@@ -12,6 +12,11 @@ int main()
     char* name = (char*) malloc(max); /* allocate buffer */
     if (name == 0) quit();
 
+    if (!IsElevated()) {
+        printf("Exiting: USBGuard requires elevated privilages to edit registry values.\n");
+        return 1;
+    }
+
     printf(
         "\n Welcome to USBGuard!\n\n"
 
@@ -48,17 +53,18 @@ int main()
     // Handle options
     switch( atoi(name) ) {
         case 1:
-            printf("%s\n", "Disabling all usb ports...");
+            printf("\n%s\n", "[*] Disabling all usb ports...");
+            DisableUSBDevices();
             break;
         case 2:
-            printf("%s\n", "Entering whitelist utility...");
+            printf("\n%s\n", "[*] Entering whitelist utility...");
             PrintDevices();
             break;
         case 3:
-            printf("%s\n", "Enabling all usb ports...");
+            printf("\n%s\n", "[*] Enabling all usb ports...");
             break;
         default:
-            printf("%s\n", "Could not interpret the provided option.");
+            printf("\n%s\n", "[*] Could not interpret the provided option.");
             break;
     }
 
