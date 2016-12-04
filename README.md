@@ -2,7 +2,17 @@
 
 ### Overview
 
-Personal computer USB port management, not intended for scale. The approach is a little different on every platform.
+Personal computer USB port management, not intended for scale. The approach is a little different on every platform. Goals for each implementation are to provide options for (check boxes indicate progress):
+
+1. Disabling all USB ports on your machine
+  - [x] Windows
+  - [ ] Linux
+2. Re-Enabling all USB ports on your machine
+  - [x] Windows
+  - [ ] Linux
+3. Whitelisting only certain USB devices to work via Plug-n-play
+  - [ ] Windows
+  - [ ] Linux
 
 ### Windows
 
@@ -12,6 +22,7 @@ The windows version disables system USB ports/devices using the registry values 
 HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Enum\\USB
 
 HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Enum\\USBSTOR
+
 ```
 
 A usefull reference for the technique is the Microsoft documentation:
