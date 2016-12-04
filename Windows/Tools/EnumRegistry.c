@@ -1,7 +1,7 @@
 // QueryKey - Enumerates the subkeys of key and its associated values.
 //     hKey - Key whose subkeys and values are to be enumerated.
 
-#include "USBGuard.h"
+#include "../USBGuard.h"
 
 #define MAX_KEY_LENGTH 255
 #define MAX_VALUE_NAME 16383
