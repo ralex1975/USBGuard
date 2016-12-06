@@ -1,7 +1,13 @@
 #include "USBGuard.h"
 
+
+// Registry path to USBSTOR
 #define USBSTOR_BASE L"SYSTEM\\CurrentControlSet\\Services\\USBSTOR"
 #define USBSTOR_ENUM L"SYSTEM\\CurrentControlSet\\Services\\USBSTOR\\Enum"
+
+// Registry path to Plug and play base and Discovery Service
+#define UPNPHOST_BASE L"SYSTEM\\CurrentControlSet\\Services\\upnphost"
+#define SSDPSRV_BASE L"SYSTEM\\CurrentControlSet\\Services\\SSDPSRV"
 
 void PrintDevices()
 {
@@ -34,7 +40,7 @@ int SetRegistryValue(DWORD value, wchar_t * path, int path_size, wchar_t * varia
 
     if (RegOpenKeyExW(HKEY_LOCAL_MACHINE, (LPCWSTR)PATH_V, 0, KEY_SET_VALUE | KEY_WOW64_64KEY, &key) == ERROR_SUCCESS)
     {
-        printf("[+] Key location open successful \n");
+        //printf("[+] Key location open successful \n");
         if (RegSetValueExW(key, VAR_V, 0, REG_DWORD, (LPBYTE)&value, sizeof(DWORD)) == ERROR_SUCCESS)
         {
             printf("[+] Key changed in registry \n");
@@ -42,6 +48,8 @@ int SetRegistryValue(DWORD value, wchar_t * path, int path_size, wchar_t * varia
         else{
             printf("[-] Key not changed in registry \n");
             printf("[-] Error %s ", GetLastErrorAsString());
+            RegCloseKey(key);
+            return 1;
         }
         RegCloseKey(key);
     }
@@ -49,6 +57,7 @@ int SetRegistryValue(DWORD value, wchar_t * path, int path_size, wchar_t * varia
     {
         printf("[-] Unsuccessful in opening key  \n");
         printf("[-] Please run with Admin privilages to edit registry values \n");
+        return 1;
     }
 
     return 0;
@@ -79,4 +88,24 @@ int EnableUSBDevices() {
 	SetRegistryValue(number, USBSTOR_ENUM, 50, L"NextInstance", 13);
 
 	return 0;
+}
+
+int DisablePnP() {
+	DWORD number = 0x00000004; 
+
+	SetRegistryValue(number, UPNPHOST_BASE, 45, L"Start", 5);
+	SetRegistryValue(number, SSDPSRV_BASE, 44, L"Start", 5);
+
+	return 0;
+
+}
+
+int EnablePnP() {
+	DWORD number = 0x00000003; 
+
+	SetRegistryValue(number, UPNPHOST_BASE, 45, L"Start", 5);
+	SetRegistryValue(number, SSDPSRV_BASE, 44, L"Start", 5);
+
+	return 0;
+
 }
